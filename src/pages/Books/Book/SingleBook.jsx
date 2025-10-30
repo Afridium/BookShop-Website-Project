@@ -1,8 +1,9 @@
 import React from 'react';
 import { CiStar } from "react-icons/ci";
+import { Link } from 'react-router';
 const SingleBook = ({ book }) => {
-    console.log(book);
     return (
+        <Link to={`/bookDetails/${book.bookId}`}>
         <div className='flex justify-center'>
             <div className="card bg-base-100 w-96 shadow-sm border border-[#13131326]">
                 <figure className="px-10 py-4 bg-[#f3f3f3] border-18 rounded-4xl border-[white]">
@@ -36,6 +37,7 @@ const SingleBook = ({ book }) => {
                 </div>
             </div>
         </div>
+        </Link>
     );
 };
 
