@@ -3,10 +3,25 @@ import { NavLink } from 'react-router';
 
 const NavBar = () => {
     const links = <>
-        <NavLink to='/'><li className='m-2'>Home</li></NavLink>
-        
-        <NavLink to='/readList'><li className='m-2'>ReadList</li></NavLink>
-    </>
+        <NavLink
+            to='/'
+            className={({ isActive }) =>
+                `block rounded-4xl m-2 p-2.5 text-center ${isActive ? 'bg-[#f3f3f3]' : 'hover:bg-[#f3f3f3] bg-white'}`
+            }
+        >
+            Home
+        </NavLink>
+
+        <NavLink
+            to='/readList'
+            className={({ isActive }) =>
+                `block rounded-4xl m-2 p-2.5 text-center ${isActive ? 'bg-[#f3f3f3]' : 'hover:bg-[#f3f3f3] bg-white'}`
+            }
+        >
+            ReadList
+        </NavLink>
+    </>;
+
     return (
         <div className='work-sans'>
             <div className="navbar bg-base-100 shadow-sm">
