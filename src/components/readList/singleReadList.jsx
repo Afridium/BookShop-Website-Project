@@ -2,6 +2,7 @@ import React from 'react';
 import { IoPeople } from "react-icons/io5";
 import { FaBook } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
+import { Link } from 'react-router';
 const SingleReadList = ({ book }) => {
     const { bookName, author, image, totalPages, rating, category, tags, publisher, yearOfPublishing } = book;
     return (
@@ -29,7 +30,9 @@ const SingleReadList = ({ book }) => {
                 <div className='flex flex-wrap items-center lg:justify-start justify-center gap-1.5'>
                     <div className='bg-[#328eff26] px-2 py-2 rounded-4xl text-[#328eff]'>Category: {category}</div>
                     <div className='bg-[#ffac3326] px-5 py-2 rounded-4xl text-[#328eff]'>{rating}</div>
-                    <button className='btn rounded-4xl bg-[#23be0a] text-white p-3'>View Details</button>
+
+                    <Link to={`/bookDetails/${book.bookId}`}><button className='btn rounded-4xl bg-[#23be0a] text-white p-3'>View Details</button></Link>
+                    
                 </div>
             </div>
         </div>
