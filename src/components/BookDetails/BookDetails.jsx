@@ -2,8 +2,11 @@ import React from 'react';
 import { useParams, useLoaderData } from 'react-router';
 import { addToStoredDB } from '../../utilities/addToDB';
 import { addToStoredDBasWishlist } from '../../utilities/addToDBasWishlist';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 const BookDetails = () => {
+    
     const { id } = useParams();
     const bookid = parseInt(id);
     const bookDetails = useLoaderData();
@@ -11,11 +14,20 @@ const BookDetails = () => {
     const { bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing } = verify;
 
     const handleMarkAsRead = id => {
-       
+        Swal.fire({
+        title: "Added Succesfully",
+        icon: "success",
+        draggable: true
+    });
         addToStoredDB(id);
     }
 
     const handleWishlist = id => {
+        Swal.fire({
+        title: "Added Succesfully",
+        icon: "success",
+        draggable: true
+    });
         addToStoredDBasWishlist(id);
     }
     return (
@@ -38,28 +50,28 @@ const BookDetails = () => {
 
                 <hr className='border-[#13131326] mb-1.5 mt-4 w-3/4 mx-auto lg:mx-0' />
                 <div className=' flex justify-center lg:justify-start'>
-                   <table className='border-separate border-spacing-x-10 lg:-ml-10'>
-                    <tbody className='text-left'>
-                        <tr>
-                            <td className='text-[#131313b3]'>Number of pages: </td>
-                            <td className='font-bold'>{totalPages}</td>
-                        </tr>
-                        <tr>
-                            <td className='text-[#131313b3]'>Publisher: </td>
-                            <td className='font-bold'>{publisher}</td>
-                        </tr>
-                        <tr>
-                            <td className='text-[#131313b3]'>Year of Publishing: </td>
-                            <td className='font-bold'>{yearOfPublishing}</td>
-                        </tr>
-                        <tr>
-                            <td className='text-[#131313b3]'>Rating: </td>
-                            <td className='font-bold'>{rating}</td>
-                        </tr>
-                    </tbody>
-                </table> 
+                    <table className='border-separate border-spacing-x-10 lg:-ml-10'>
+                        <tbody className='text-left'>
+                            <tr>
+                                <td className='text-[#131313b3]'>Number of pages: </td>
+                                <td className='font-bold'>{totalPages}</td>
+                            </tr>
+                            <tr>
+                                <td className='text-[#131313b3]'>Publisher: </td>
+                                <td className='font-bold'>{publisher}</td>
+                            </tr>
+                            <tr>
+                                <td className='text-[#131313b3]'>Year of Publishing: </td>
+                                <td className='font-bold'>{yearOfPublishing}</td>
+                            </tr>
+                            <tr>
+                                <td className='text-[#131313b3]'>Rating: </td>
+                                <td className='font-bold'>{rating}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                
+
 
                 <div className='flex justify-center lg:justify-start mt-9 lg:mt-5 gap-2.5 mb-4'>
                     <button onClick={() => handleMarkAsRead(id)} className='btn p-2 px-6'>Read</button>
